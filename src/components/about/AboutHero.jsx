@@ -86,9 +86,9 @@ const AboutHero = () => {
                     <div className={`inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 text-white/90 border border-white/20 hover:bg-white/20 transition-all duration-300 cursor-pointer group mb-8 transform ${
                         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                     }`}>
-                        <Sparkles className="w-5 h-5 text-emerald-300 mr-3 group-hover:animate-spin" />
+                        <Sparkles className="w-5 h-5 text-emerald-300 mr-3 animate-spin" />
                         <span className="text-base font-semibold">About Noble Vet Surgeons</span>
-                        <Award className="w-5 h-5 text-yellow-400 ml-3 group-hover:animate-bounce" />
+                        <Award className="w-5 h-5 text-yellow-400 ml-3 animate-bounce" />
                     </div>
 
                     {/* Main Title */}

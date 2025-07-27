@@ -86,15 +86,15 @@ const Hero = () => {
                         isVisible ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'
                     }`}>
                         <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-white/90 border border-white/20 hover:bg-white/20 transition-all duration-300 cursor-pointer group">
-                            <Sparkles className="w-4 h-4 text-emerald-300 mr-2 group-hover:animate-spin" />
+                            <Sparkles className="w-4 h-4 text-emerald-300 mr-2 animate-spin" />
                             <span className="text-sm font-medium">Kenya's Premier Animal Healthcare</span>
-                            <Award className="w-4 h-4 text-yellow-400 ml-2 group-hover:animate-bounce" />
+                            <Award className="w-4 h-4 text-yellow-400 ml-2 animate-bounce" />
                         </div>
 
                         <h1 className="text-4xl lg:text-5xl font-bold text-white leading-tight">
                             <span className="inline-block animate-fade-in-up">Professional </span>
                             <span className="inline-block bg-gradient-to-r from-emerald-300 via-teal-300 to-cyan-300 bg-clip-text text-transparent animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                                 Animal Care
+                                Animal Care
                             </span>
                             <span className="block text-emerald-200 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
                                 You Trust
