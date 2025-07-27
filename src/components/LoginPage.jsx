@@ -47,7 +47,71 @@ export default function AuthPages() {
       </div>
 
       <div className="relative z-10 flex items-center justify-center min-h-screen p-4">
-        <div className="w-full max-w-md">
+        <div className="flex w-full max-w-6xl items-center gap-12">
+          {/* Left Side - Welcome Text */}
+           <div className="hidden lg:flex flex-1 flex-col space-y-6 text-white -mt-12">
+            <div className="space-y-4">
+              <h1 className="text-5xl font-bold leading-tight">
+                Welcome to<br />
+                <span className="text-emerald-300">Noble Vet</span>
+              </h1>
+              <p className="text-xl text-white/90 leading-relaxed">
+                Join thousands of pet parents who trust us with their beloved companions
+              </p>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                  <Heart className="w-6 h-6 text-emerald-300" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white">Compassionate Care</h3>
+                  <p className="text-white/80">Expert veterinary services with love and dedication</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                  <Stethoscope className="w-6 h-6 text-teal-300" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white">24/7 Emergency</h3>
+                  <p className="text-white/80">Round-the-clock care when your pet needs it most</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                  <Shield className="w-6 h-6 text-green-300" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white">Trusted Professionals</h3>
+                  <p className="text-white/80">Certified veterinarians with years of experience</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-6">
+              <div className="flex items-center space-x-8 text-white/90">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-emerald-300">15+</div>
+                  <div className="text-sm">Years Experience</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-teal-300">10K+</div>
+                  <div className="text-sm">Happy Pets</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-green-300">98%</div>
+                  <div className="text-sm">Success Rate</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side - Auth Form */}
+          <div className="w-full max-w-md lg:flex-shrink-0">
           {/* Logo Section */}
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-emerald-500 rounded-2xl mb-4 shadow-2xl transform hover:scale-110 transition-transform duration-300">
@@ -277,12 +341,13 @@ export default function AuthPages() {
           </div>
 
           {/* Footer */}
-          <div className="text-center mt-8 text-white/60 text-sm">
+          <div className="text-center mt-1 text-white/60 text-sm">
             <p>Professional veterinary care for all animals in Kenya</p>
             <p className="mt-2">24/7 Emergency Services Available</p>
           </div>
         </div>
       </div>
     </div>
+    </div>  
   );
 }
