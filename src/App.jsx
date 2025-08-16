@@ -5,6 +5,7 @@ import Footer from '../src/components/layout/Footer.jsx';
 import Home from '../src/components/ pages/Home.jsx';
 import About from '../src/components/ pages/About.jsx';
 import LoginPage from '../src/components/auth/LoginPage.jsx';
+import Dashboard from '../src/components/dashboard/Dashboard.jsx';
 import './index.css';
 
 // Coming Soon Component for placeholder pages
@@ -45,6 +46,9 @@ const App = () => {
             <Routes>
                 {/* Login route without navigation/footer */}
                 <Route path="/login" element={<LoginPage />} />
+                
+                {/* Dashboard route without navigation/footer */}
+                <Route path="/dashboard" element={<Dashboard />} />
                 
                 {/* All other routes with navigation/footer */}
                 <Route path="/" element={<Layout><Home /></Layout>} />

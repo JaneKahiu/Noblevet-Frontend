@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, User, Phone, ArrowRight, Heart, Stethoscope, Shield } from 'lucide-react';
 
 export default function AuthPages() {
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -23,6 +25,15 @@ export default function AuthPages() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
+    
+    // Simulate login/register process
+    if (isLogin) {
+      // Redirect to dashboard on successful login
+      navigate('/dashboard');
+    } else {
+      // For registration, you might want to redirect to login first or directly to dashboard
+      navigate('/dashboard');
+    }
   };
 
   return (
@@ -314,18 +325,7 @@ export default function AuthPages() {
               <div className="flex-1 h-px bg-white/20"></div>
             </div>
 
-            {/* Social Buttons */}
-            <div className="grid grid-cols-2 gap-4">
-              <button className="flex items-center justify-center space-x-2 py-3 px-4 bg-white/10 border border-white/20 rounded-xl text-white hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
-                <div className="w-5 h-5 bg-white rounded-full"></div>
-                <span className="text-sm">Google</span>
-              </button>
-              <button className="flex items-center justify-center space-x-2 py-3 px-4 bg-white/10 border border-white/20 rounded-xl text-white hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
-                <div className="w-5 h-5 bg-blue-500 rounded"></div>
-                <span className="text-sm">Facebook</span>
-              </button>
-            </div>
-
+23 899726
             {/* Switch Mode */}
             <div className="text-center mt-8">
               <span className="text-white/60">
