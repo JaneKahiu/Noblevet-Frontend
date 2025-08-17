@@ -15,7 +15,9 @@ import {
   PawPrint,
   CreditCard,
   BarChart3,
-  UserCheck
+  UserCheck,
+  MapPin,
+  Phone
 } from 'lucide-react';
 
 export default function Sidebar({ activeTab, setActiveTab, isCollapsed, setIsCollapsed }) {
