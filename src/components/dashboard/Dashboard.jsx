@@ -10,6 +10,9 @@ import Reminders from './pages/Reminders';
 import Profile from './pages/Profile';
 import Reports from './pages/Reports';
 import Settings from './pages/Settings';
+import Services from './pages/Services';
+import Locations from './pages/Locations';
+import Contacts from './pages/Contacts';
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -36,6 +39,12 @@ export default function Dashboard() {
         return <Reports />;
       case 'settings':
         return <Settings />;
+      case 'services':
+        return <Services />;
+      case 'locations':
+        return <Locations />;
+      case 'contacts':
+        return <Contacts />;
       default:
         return <DashboardHome />;
     }
