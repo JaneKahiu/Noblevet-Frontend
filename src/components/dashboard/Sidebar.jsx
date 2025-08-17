@@ -18,7 +18,7 @@ import {
   UserCheck
 } from 'lucide-react';
 
-export default function Sidebar({ activeTab, setActiveTab, isCollapsed, setIsCollapsed }) {
+export default function Sidebar({ activeTab, setActiveTab, isCollapsed, setIsCollapsed, isMobileMenuOpen, setIsMobileMenuOpen }) {
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: Home },
     { id: 'appointments', label: 'Appointments', icon: Calendar },
@@ -32,7 +32,13 @@ export default function Sidebar({ activeTab, setActiveTab, isCollapsed, setIsCol
   ];
 
   return (
-    <div className={`${isCollapsed ? 'w-20' : 'w-72'} bg-gradient-to-b from-emerald-800 to-emerald-900 h-screen fixed left-0 top-0 z-20 transition-all duration-300 ease-in-out shadow-2xl`}>
+    <div className={`
+      ${isCollapsed ? 'w-20' : 'w-72'} 
+      bg-gradient-to-b from-emerald-800 to-emerald-900 
+      h-screen fixed left-0 top-0 z-40 
+      transition-all duration-300 ease-in-out shadow-2xl
+      ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+    `}>
       {/* Header */}
       <div className="p-6 border-b border-emerald-700/50">
         <div className="flex items-center justify-between">
@@ -49,7 +55,15 @@ export default function Sidebar({ activeTab, setActiveTab, isCollapsed, setIsCol
             </div>
           )}
           <button
-            onClick={() => setIsCollapsed(!isCollapsed)}
+            onClick={() => {
+              if (window.innerWidth < 1024) {
+                // On mobile, close the menu instead of collapsing
+                setIsMobileMenuOpen(false);
+              } else {
+                // On desktop, toggle collapse
+                setIsCollapsed(!isCollapsed);
+              }
+            }}
             className="p-2 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white transition-colors duration-200"
           >
             {isCollapsed ? <ChevronRight className="h-5 w-5" /> : <ChevronLeft className="h-5 w-5" />}
@@ -66,7 +80,13 @@ export default function Sidebar({ activeTab, setActiveTab, isCollapsed, setIsCol
           return (
             <button
               key={item.id}
-              onClick={() => setActiveTab(item.id)}
+              onClick={() => {
+                setActiveTab(item.id);
+                // Close mobile menu when item is selected
+                if (window.innerWidth < 1024) {
+                  setIsMobileMenuOpen(false);
+                }
+              }}
               className={`
                 w-full flex items-center space-x-3 px-4 py-3 rounded-xl mb-2 transition-all duration-200 group
                 ${isActive 

@@ -16,10 +16,17 @@ import {
   Award,
   Activity
 } from 'lucide-react';
+import AddPetModal from '../modals/AddPetModal';
 
 export default function MyPets() {
   const [showAddModal, setShowAddModal] = useState(false);
   const [selectedPet, setSelectedPet] = useState(null);
+
+  const handleAddPet = (petData) => {
+    console.log('Adding new pet:', petData);
+    // Here you would typically add the pet to your pets array or send to API
+    setShowAddModal(false);
+  };
 
   const pets = [
     {
@@ -373,6 +380,13 @@ export default function MyPets() {
           </div>
         </div>
       )}
+
+      {/* Add Pet Modal */}
+      <AddPetModal
+        isOpen={showAddModal}
+        onClose={() => setShowAddModal(false)}
+        onSubmit={handleAddPet}
+      />
     </div>
   );
 }

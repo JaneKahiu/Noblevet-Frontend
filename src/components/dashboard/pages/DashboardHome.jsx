@@ -13,9 +13,26 @@ import {
   CheckCircle,
   AlertTriangle
 } from 'lucide-react';
+import AppointmentModal from '../modals/AppointmentModal';
 
 export default function DashboardHome() {
   const [showQuickActions, setShowQuickActions] = useState(false);
+  const [showAppointmentModal, setShowAppointmentModal] = useState(false);
+
+  // Sample pets data for the modal
+  const pets = [
+    { id: 1, name: 'Fluffy', type: 'Cat' },
+    { id: 2, name: 'Max', type: 'Dog' },
+    { id: 3, name: 'Bella', type: 'Dog' },
+    { id: 4, name: 'Whiskers', type: 'Cat' },
+  ];
+
+  const handleAppointmentSubmit = (appointmentData) => {
+    // Handle appointment submission
+    console.log('New appointment:', appointmentData);
+    // Here you would typically send the data to your backend
+    setShowAppointmentModal(false);
+  };
 
   const stats = [
     {
@@ -103,7 +120,12 @@ export default function DashboardHome() {
   ];
 
   const quickActions = [
-    { title: "Book Appointment", icon: Calendar, color: "bg-emerald-500" },
+    { 
+      title: "Book Appointment", 
+      icon: Calendar, 
+      color: "bg-emerald-500", 
+      onClick: () => setShowAppointmentModal(true) 
+    },
     { title: "Add New Pet", icon: PawPrint, color: "bg-blue-500" },
     { title: "View Messages", icon: MessageSquare, color: "bg-purple-500" },
     { title: "Pay Bills", icon: CreditCard, color: "bg-orange-500" }
@@ -213,6 +235,7 @@ export default function DashboardHome() {
                 return (
                   <button
                     key={action.title}
+                    onClick={action.onClick}
                     className={`${action.color} text-white p-4 rounded-lg hover:opacity-90 transition-all duration-200 hover:scale-105 group`}
                   >
                     <Icon className="h-6 w-6 mb-2 group-hover:animate-bounce" />
@@ -234,6 +257,14 @@ export default function DashboardHome() {
           <Plus className="h-6 w-6" />
         </button>
       </div>
+
+      {/* Appointment Modal */}
+      <AppointmentModal
+        isOpen={showAppointmentModal}
+        onClose={() => setShowAppointmentModal(false)}
+        onSubmit={handleAppointmentSubmit}
+        pets={pets}
+      />
     </div>
   );
 }

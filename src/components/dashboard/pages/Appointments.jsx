@@ -14,11 +14,27 @@ import {
   XCircle,
   AlertTriangle
 } from 'lucide-react';
+import AppointmentModal from '../modals/AppointmentModal';
 
 export default function Appointments() {
   const [selectedTab, setSelectedTab] = useState('upcoming');
   const [showModal, setShowModal] = useState(false);
   const [selectedAppointment, setSelectedAppointment] = useState(null);
+
+  // Sample pets data for the modal
+  const pets = [
+    { id: 1, name: 'Fluffy', type: 'Cat' },
+    { id: 2, name: 'Max', type: 'Dog' },
+    { id: 3, name: 'Bella', type: 'Dog' },
+    { id: 4, name: 'Whiskers', type: 'Cat' },
+  ];
+
+  const handleAppointmentSubmit = (appointmentData) => {
+    // Handle appointment submission
+    console.log('New appointment:', appointmentData);
+    // Here you would typically send the data to your backend
+    setShowModal(false);
+  };
 
   const appointments = {
     upcoming: [
@@ -248,6 +264,14 @@ export default function Appointments() {
           </div>
         )}
       </div>
+
+      {/* Appointment Modal */}
+      <AppointmentModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        onSubmit={handleAppointmentSubmit}
+        pets={pets}
+      />
     </div>
   );
 }

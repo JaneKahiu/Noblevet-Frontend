@@ -15,7 +15,7 @@ import {
   Phone
 } from 'lucide-react';
 
-export default function TopBar({ isCollapsed, setIsCollapsed }) {
+export default function TopBar({ isCollapsed, setIsCollapsed, isMobileMenuOpen, setIsMobileMenuOpen }) {
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -27,19 +27,28 @@ export default function TopBar({ isCollapsed, setIsCollapsed }) {
   ];
 
   return (
-    <div className={`${isCollapsed ? 'ml-20' : 'ml-72'} transition-all duration-300 bg-white shadow-lg border-b border-gray-200 sticky top-0 z-10`}>
+    <div className={`${isCollapsed ? 'lg:ml-20' : 'lg:ml-72'} ml-0 transition-all duration-300 bg-white shadow-lg border-b border-gray-200 sticky top-0 z-[35]`}>
       <div className="flex items-center justify-between px-6 py-4">
         {/* Left Section */}
         <div className="flex items-center space-x-4">
+          {/* Mobile Menu Button */}
           <button
-            onClick={() => setIsCollapsed(!isCollapsed)}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
           >
             <Menu className="h-5 w-5 text-gray-600" />
           </button>
           
+          {/* Desktop Collapse Button */}
+          <button
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            className="hidden lg:block p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            <Menu className="h-5 w-5 text-gray-600" />
+          </button>
+          
           {/* Search Bar */}
-          <div className="relative">
+          <div className="relative hidden sm:block">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
             <input
               type="text"

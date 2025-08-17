@@ -14,6 +14,7 @@ import Settings from './pages/Settings';
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const renderActiveComponent = () => {
     switch (activeTab) {
@@ -47,13 +48,26 @@ export default function Dashboard() {
         setActiveTab={setActiveTab}
         isCollapsed={isCollapsed}
         setIsCollapsed={setIsCollapsed}
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
       />
+      
+      {/* Mobile Overlay */}
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 lg:hidden"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
       <div className="flex flex-col">
         <TopBar 
           isCollapsed={isCollapsed}
           setIsCollapsed={setIsCollapsed}
+          isMobileMenuOpen={isMobileMenuOpen}
+          setIsMobileMenuOpen={setIsMobileMenuOpen}
         />
-        <main className={`${isCollapsed ? 'ml-20' : 'ml-72'} transition-all duration-300 p-6 min-h-screen`}>
+        <main className={`${isCollapsed ? 'lg:ml-20' : 'lg:ml-72'} ml-0 transition-all duration-300 p-6 min-h-screen`}>
           <div className="animate-fade-in-up">
             {renderActiveComponent()}
           </div>

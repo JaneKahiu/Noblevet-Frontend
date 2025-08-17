@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { 
   Bell, 
   Plus, 
@@ -310,12 +311,17 @@ export default function Reminders() {
       </div>
 
       {/* Add Reminder Modal */}
-      {showAddModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl max-w-md w-full animate-fade-in-up">
+      {showAddModal && createPortal(
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999] p-4 animate-fade-in">
+          <div className="bg-white rounded-2xl max-w-md w-full animate-scale-in shadow-2xl">
             <div className="p-6 border-b border-gray-200">
               <div className="flex items-center justify-between">
-                <h2 className="text-xl font-bold text-gray-900">Add New Reminder</h2>
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                    <Bell className="h-5 w-5 text-white" />
+                  </div>
+                  <h2 className="text-xl font-bold text-gray-900">Add New Reminder</h2>
+                </div>
                 <button
                   onClick={() => setShowAddModal(false)}
                   className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
@@ -392,7 +398,8 @@ export default function Reminders() {
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
